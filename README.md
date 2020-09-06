@@ -13,7 +13,7 @@
 
 ## 反馈方式
 
-- [email](mailto:hijackzhang@qq.com?subject=反馈与建议)
+- [Email](mailto:hijackzhang@qq.com?subject=反馈与建议)
 - [QQ](http://wpa.qq.com/msgrd?v=3&uin=997410268&site=qq&menu=yes)
 
 ## 计算机基础知识
