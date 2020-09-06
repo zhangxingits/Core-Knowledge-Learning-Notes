@@ -24,9 +24,9 @@
 
 ## 数据结构与算法
 
-## Linux系统
+## [Linux系统](https://github.com/zhangxingits/Core-Knowledge-Learning-Notes/blob/master/Linux%E7%B3%BB%E7%BB%9F/Linux%E7%B3%BB%E7%BB%9F.md)
 
-## 数据库知识
+## [数据库知识](Linux系统\Linux系统.md)
 
 ## 分布式知识
 
