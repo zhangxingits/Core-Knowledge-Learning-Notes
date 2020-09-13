@@ -5,8 +5,6 @@
 
 [TOC]
 
-
-
 ## 版权说明
 
 本仓库分享资料遵守其创作者之规定。
@@ -20,17 +18,13 @@
 - [Email](mailto:hijackzhang@qq.com?subject=反馈与建议)
 - [QQ](http://wpa.qq.com/msgrd?v=3&uin=997410268&site=qq&menu=yes)
 
-## 计算机基础知识
-
-## 数据结构与算法
-
 ## [Linux系统](Linux系统/Linux系统.md)
+
+## [数据结构与算法](数据结构与算法/数据结构与算法.md)
 
 ## 数据库知识
 
-## 分布式知识
-
-## 互联网技术架构
+## 分布式
 
 ## 容器化系统
 
