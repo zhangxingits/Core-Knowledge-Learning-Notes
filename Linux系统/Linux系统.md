@@ -27,7 +27,7 @@ int fcntl( int fd, int cmd, ... );
 
 ​	fcntl函数功能依据cmd的值的不同而不同。部分参数对应功能如下：
 
-![img](https://xin88-1251200810.cos.ap-guangzhou.myqcloud.com/Center.png)
+![Center](../picture/Center.png)
 
 ​	fcntl函数成功时的返回值根据操作类型的不同而不同，失败则返回-1并设置errno。
 
@@ -44,7 +44,5 @@ int setnonblocking( int fd )
 ```
 
 ​	此外，SIGIO和SIGURG这两个信号与其他Linux信号不同，它们必须与某个文件描述符相关联方可使用：当被关联的文件描述符可读或可写时，系统将触发SIGIO信号；当被关联的文件描述符（而且必须是一个socket）上有带外数据可读时，系统将触发SIGURG信号。将信号和文件描述符关联的方法，就是使用fcntl函数为目标文件描述符宿主进程或进程组，那么被指定的宿主进程或进程组将捕获这两个信号。使用SIGIO时，还需要利用fcntl设置其O_ASYNC标志（异步IO标志，不过SIGIO信号模型并非真正意义上的异步IO模型）。
-
-![11111](https://xin88-1251200810.cos.ap-guangzhou.myqcloud.com/11111.png)
 
 ## 3.I/O多路复用
