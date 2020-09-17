@@ -45,6 +45,6 @@ int setnonblocking( int fd )
 
 ​	此外，SIGIO和SIGURG这两个信号与其他Linux信号不同，它们必须与某个文件描述符相关联方可使用：当被关联的文件描述符可读或可写时，系统将触发SIGIO信号；当被关联的文件描述符（而且必须是一个socket）上有带外数据可读时，系统将触发SIGURG信号。将信号和文件描述符关联的方法，就是使用fcntl函数为目标文件描述符宿主进程或进程组，那么被指定的宿主进程或进程组将捕获这两个信号。使用SIGIO时，还需要利用fcntl设置其O_ASYNC标志（异步IO标志，不过SIGIO信号模型并非真正意义上的异步IO模型）。
 
-![11](Linux系统.assets/11-1600358221283.png)
+![11](https://xin88-1251200810.cos.ap-guangzhou.myqcloud.com/11.png)
 
 ## 3.I/O多路复用
