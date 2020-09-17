@@ -27,7 +27,7 @@ int fcntl( int fd, int cmd, ... );
 
 ​	fcntl函数功能依据cmd的值的不同而不同。部分参数对应功能如下：
 
-![img](../picture/Center.png)
+![img](https://xin88-1251200810.cos.ap-guangzhou.myqcloud.com/Center.png)
 
 ​	fcntl函数成功时的返回值根据操作类型的不同而不同，失败则返回-1并设置errno。
 
