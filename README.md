@@ -16,7 +16,7 @@
 - [Email](mailto:hijackzhang@qq.com?subject=反馈与建议)
 - [QQ](http://wpa.qq.com/msgrd?v=3&uin=997410268&site=qq&menu=yes)
 
-## C/C++
+## [C/C++](C++/C++.md)
 
 ## [Linux系统](Linux系统/Linux系统.md)
 
