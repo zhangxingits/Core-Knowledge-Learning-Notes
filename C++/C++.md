@@ -86,3 +86,4 @@ v.swap(vector<int>());
 }
 ```
 
+### 1.5 Vector类的简单实现
