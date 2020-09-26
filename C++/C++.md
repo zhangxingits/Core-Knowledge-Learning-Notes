@@ -339,5 +339,11 @@ for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
 
 用pair判断insert到map的数据是否插入成功。pair变量insert_pair中的第一个元素的类型是map<int,string>::iterator，是和即将要判断的map中的key、value类型一致的一个map的迭代器。如果insert成功了，则insert_pair.second的结果为true，否则则为false。同一个key已经有数据之后，再insert就会失败。而数组插入的方式，则是直接覆盖。
 
+##### 1.2.1.2 map的遍历
+
+map数据的遍历，这里也提供3种方法，来对map进行遍历：应用前向迭代器方式、应用反向迭代器方式和数组方式。应用前向迭代器，上面举例程序中已经讲解过了，这里着重讲解应用反向迭代器的方式，下面举例说明。
+
+
+
 
 
