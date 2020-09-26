@@ -276,3 +276,68 @@ key和value可以是任意你需要的类型，但是需要注意的是对于key
 
 根据key值快速查找记录，查找的复杂度基本是Log（N），即如果有1000个记录，最多查找10次；1000000个记录，最多查找20次。除此之外，还有快速插入Key-Value记录、快速删除记录、根据Key修改value记录、遍历所有记录等功能。
 
+#### 1.2.1 map的查增删
+
+##### 1.2.1.1 map的插入
+
+先讲下map的插入，map的插入有3种方式：用insert函数插入pair数据、用insert函数插入value_type数据和用数组方式插入数据。
+
+- 用insert函数插入pair数据
+
+  ```c++
+  map<int, string> mapStudent;
+  mapStudent.insert(pair<int, string>(1, "student_one"));
+  mapStudent.insert(pair<int, string>(2, "student_two"));
+  mapStudent.insert(pair<int, string>(3, "student_three"));
+  map<int, string>::iterator iter;
+  ```
+
+- 用insert函数插入value_type数据
+
+  ```c++
+  map<int, string> mapStudent;
+  mapStudent.insert(map<int, string>::value_type (1,"student_one"));
+  mapStudent.insert(map<int, string>::value_type (2,"student_two"));
+  mapStudent.insert(map<int, string>::value_type (3,"student_three"));
+  map<int, string>::iterator  iter;
+  ```
+
+- map中用数组方式插入数据
+
+  ```c++
+  map<int, string> mapStudent;
+  mapStudent[1] =  "student_one";
+  mapStudent[2] =  "student_two";
+  mapStudent[3] =  "student_three";
+  ```
+
+以上3种用法，虽然都可以实现数据的插入，但是它们是有区别的，当然了第一种和第二种在效果上是完全一样的，用insert函数插入数据，在数据的插入上涉及集合的唯一性这个概念，即当map中有这个关键字时，insert操作是插入不了数据的，但是用数组方式就不同了，它可以覆盖以前该关键字对应的值。那么这就涉及如何知道insert语句是否插入成功的问题了，可以用pair来获得是否插入成功。
+
+可以通过insert返回的pair的第二个变量来知道是否插入成功，它的第一个变量返回的是一个map的迭代器，如果插入成功的话insert_Pair.second应该是true的，否则为false。
+
+```c++
+map<int, string> mapStudent;
+pair<map<int, string>::iterator, bool> insert_pair;
+insert_pair = mapStudent.insert(pair<int,string>(1,"student_one"));
+if(insert_pair.second == true){
+    cout<<"Insert Successfully"<<endl;
+}
+else{
+    cout<<"Insert Failure"<<endl;
+}
+insert_pair = mapStudent.insert(pair<int, string>(1, "student_two"));
+if(insert_pair.second == true){
+    cout<<"Insert Successfully"<<endl;
+}else{
+    cout<<"Insert Failure"<<endl;
+}
+map<int, string>::iterator iter;
+for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
+    cout<<iter->first<<" "<<iter->second<<endl;
+}
+```
+
+用pair判断insert到map的数据是否插入成功。pair变量insert_pair中的第一个元素的类型是map<int,string>::iterator，是和即将要判断的map中的key、value类型一致的一个map的迭代器。如果insert成功了，则insert_pair.second的结果为true，否则则为false。同一个key已经有数据之后，再insert就会失败。而数组插入的方式，则是直接覆盖。
+
+
+
