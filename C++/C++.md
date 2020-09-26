@@ -290,6 +290,9 @@ key和value可以是任意你需要的类型，但是需要注意的是对于key
   mapStudent.insert(pair<int, string>(2, "student_two"));
   mapStudent.insert(pair<int, string>(3, "student_three"));
   map<int, string>::iterator iter;
+  for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
+      cout<<iter->first<<" "<<iter->second<<endl;
+  }
   ```
 
 - 用insert函数插入value_type数据
@@ -300,6 +303,9 @@ key和value可以是任意你需要的类型，但是需要注意的是对于key
   mapStudent.insert(map<int, string>::value_type (2,"student_two"));
   mapStudent.insert(map<int, string>::value_type (3,"student_three"));
   map<int, string>::iterator  iter;
+  for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
+      cout<<iter->first<<" "<<iter->second<<endl;
+  }
   ```
 
 - map中用数组方式插入数据
@@ -309,6 +315,9 @@ key和value可以是任意你需要的类型，但是需要注意的是对于key
   mapStudent[1] =  "student_one";
   mapStudent[2] =  "student_two";
   mapStudent[3] =  "student_three";
+  for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
+      cout<<iter->first<<" "<<iter->second<<endl;
+  }
   ```
 
 以上3种用法，虽然都可以实现数据的插入，但是它们是有区别的，当然了第一种和第二种在效果上是完全一样的，用insert函数插入数据，在数据的插入上涉及集合的唯一性这个概念，即当map中有这个关键字时，insert操作是插入不了数据的，但是用数组方式就不同了，它可以覆盖以前该关键字对应的值。那么这就涉及如何知道insert语句是否插入成功的问题了，可以用pair来获得是否插入成功。
@@ -343,7 +352,20 @@ for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
 
 map数据的遍历，这里也提供3种方法，来对map进行遍历：应用前向迭代器方式、应用反向迭代器方式和数组方式。应用前向迭代器，上面举例程序中已经讲解过了，这里着重讲解应用反向迭代器的方式，下面举例说明。
 
+- map反向迭代器的使用举例
 
+  ```c++
+  map<int,string> mapStudent;
+  mapStudent[1] =  "student_one"; 
+  mapStudent[2] =  "student_two"; 
+  mapStudent[3] =  "student_three";
+  map<int, string>::reverse_iterator   iter;
+  for(iter = mapStudent.rbegin(); iter != mapStudent.rend(); iter++){
+      cout<<iter->first<<" "<<iter->second<<endl;
+  }
+  ```
+
+  
 
 
 
