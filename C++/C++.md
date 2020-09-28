@@ -365,9 +365,5 @@ map数据的遍历，这里也提供3种方法，来对map进行遍历：应用�
   for(iter = mapStudent.rbegin(); iter != mapStudent.rend(); iter++){
       cout<<iter->first<<" "<<iter->second<<endl;
   }
-```
-  
-  
-
-
+  ```
 
