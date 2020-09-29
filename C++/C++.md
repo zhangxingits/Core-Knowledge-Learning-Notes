@@ -374,3 +374,19 @@ map数据的遍历，这里也提供3种方法，来对map进行遍历：应用�
 第一种：用count函数来判定关键字是否出现，其缺点是无法定位数据出现位置，由于map的一对一的映射特性，就决定了count函数的返回值只有两个，要么是0，要么是1，当要判定的关键字出现时返回1。
 
 第二种：用find函数来定位数据出现位置，它返回的一个迭代器，当数据出现时，它返回数据所在位置的迭代器；如果map中没有要查找的数据，它返回的迭代器等于end函数返回的迭代器。
+
+- 用find方法查找map中的数据，find函数返回的是一个迭代器；找不到对应数据的时候，则会返回mapStudent.end()。
+
+```c++
+map<int,string> mapStudent;
+mapStudent[1] = "student_one"; 
+mapStudent[2] = "student_two"; 
+mapStudent[3] = "student_three";
+map<int, string>::iterator iter=mapStudent.find(1); 
+if(iter != mapStudent.end()){
+	cout<<"Found, the value is "<<iter->second<<endl;
+}else{
+	cout<<"Do not found"<<endl; 
+}
+```
+
