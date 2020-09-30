@@ -400,3 +400,25 @@ map.erase(p);	 // 从map中删除迭代器p所指向的元素。p必须指向map
 map.erase(b, e); /* 从map中删除一段范围内的元素，该范围由迭代器对b和e标记。b和e必须标记map中的一段有效范围：即b和e都必须指向map中的元素或最后一个元素的下一个位置。而且，b和e要么相等（此时删除的范围为空），要么b所指向的元素必须出现在e所指向的元素之前，返回void类型。常用的是第二种，并且是在遍历的过程中删除元素。 */
 ```
 
+```c++
+ map<int, string> mapStudent;
+ mapStudent[1]="student_one";
+ mapStudent[2]="student_two";
+ mapStudent[3]="student_three";
+ mapStudent[4]="student_four";	
+ map<int, string>::iterator iter=mapStudent.begin();
+ for(;iter!=mapStudent.end();){
+ 	if((*iter).second=="student_one"){
+ 		mapStudent.erase(iter++);
+ 	}
+ 	else{
+ 		++iter;
+ 	}
+ }	
+ for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
+ 	cout<<iter->first<<" "<<iter->second<<endl;
+ }
+```
+
+> 注意：mapStudent.erase(iter++)；中的iter++，不是erase(iter)，然后iter++。因为iter指针被erase之后就失效了，不能再用iter++；也不是erase(++iter)，这样就不是删iter原来指向的元素了。
+
