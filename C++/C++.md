@@ -406,6 +406,7 @@ map.erase(b, e); /* 从map中删除一段范围内的元素，该范围由迭代
  mapStudent[2]="student_two";
  mapStudent[3]="student_three";
  mapStudent[4]="student_four";	
+
  map<int, string>::iterator iter=mapStudent.begin();
  for(;iter!=mapStudent.end();){
  	if((*iter).second=="student_one"){
