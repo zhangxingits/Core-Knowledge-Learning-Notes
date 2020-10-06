@@ -416,7 +416,6 @@ map.erase(b, e); /* 从map中删除一段范围内的元素，该范围由迭代
  		++iter;
  	}
  }	
-
  for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
  	cout<<iter->first<<" "<<iter->second<<endl;
  }
