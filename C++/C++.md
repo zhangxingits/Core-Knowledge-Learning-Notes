@@ -426,3 +426,21 @@ map.erase(b, e); /* 从map中删除一段范围内的元素，该范围由迭代
 
 > 注意：mapStudent.erase(iter++)；中的iter++，不是erase(iter)，然后iter++。因为iter指针被erase之后就失效了，不能再用iter++；也不是erase(++iter)，这样就不是删iter原来指向的元素了。
 
+##### 1.2.1.5 map的排序
+
+map的排序默认按照key从小到大排序，但有以下几点需要注意：①按照key从大到小排序；②key（第一个元素）是一个结构体；③想按value（第二个元素）排序。
+
+```c++
+template < class Key, class T, class Compare = less<Key>, class Allocator = allocator<pair<const Key,T> > > 
+class map;
+```
+
+它有4个参数，其中比较熟悉的有两个：Key和Value。第4个是Allocator，用来定义存储分配模型的，此处不作介绍。现在重点看下第3个参数：
+
+```c++
+class Compare = less<Key>
+```
+
+这也是一个class类型的，而且提供了默认值less<Key>。less是STL里面的一个函数对象，那么什么是函数对象呢？
+
+所谓的函数对象，即调用操作符的类，其对象常称为函数对象（function object），它们是行为类似函数的对象。表现出一个函数的特征，就是通过“对象名+（参数列表）”的方式使用一个类，其实质是对operator（）操作符的重载。
