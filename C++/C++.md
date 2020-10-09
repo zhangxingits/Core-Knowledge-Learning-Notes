@@ -444,3 +444,35 @@ class Compare = less<Key>
 这也是一个class类型的，而且提供了默认值less<Key>。less是STL里面的一个函数对象，那么什么是函数对象呢？
 
 所谓的函数对象，即调用操作符的类，其对象常称为函数对象（function object），它们是行为类似函数的对象。表现出一个函数的特征，就是通过“对象名+（参数列表）”的方式使用一个类，其实质是对operator（）操作符的重载。
+
+现在来看一下less的实现：
+
+```c++
+template <class T> struct less : binary_function <T, T, bool> {
+    bool operator() (const T& x, const T& y) const
+    {return x < y;}
+}
+```
+
+它是一个带模板的struct，里面仅仅对（）运算符进行了重载，实现很简单，但用起来很方便，这就是函数对象的优点所在。STL中还为四则运算等常见运算定义了这样的函数对象，与less相对的还有greater：
+
+```c++
+template <class T> struct greater : binary_function <T, T, bool> {
+    bool operator() (const T& x, const T& y) const
+    {return x > y;}
+}
+```
+
+因此，要想让map中的元素按照key从大到小排序，可以如下代码所示：
+
+```c++
+map<string, int, greater<string> > mapStudent;
+mapStudent["LiMin"]=90;
+mapStudent["ZiLinMi"]=72;
+mapStudent["BoB"]=79;
+map<string, int>::iterator iter=mapStudent.begin();
+for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
+    cout<<iter->first<<" "<<iter->second<<endl;
+}
+```
+
