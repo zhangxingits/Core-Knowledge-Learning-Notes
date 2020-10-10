@@ -476,3 +476,23 @@ for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
 }
 ```
 
+只需指定它的第3个参数Compare，把默认的less指定为greater，即可达到按照key从大到小排序。现在知道如何为map指定Compare类了，如果想自己写一个Compare的类，让map按照想要的顺序来存储，比如按照学生姓名的长短排序进行存储，那么只要自己写一个函数对象，实现想要的逻辑，并在定义map的时候把Compare指定为自己编写的这个就可以实现了，代码如下：
+
+```c++
+struct CmpByKeyLength {  
+  bool operator()(const string& k1, const string& k2) {  
+    return k1.length() < k2.length();  
+  }  
+};
+
+map<string, int, CmpByKeyLength > mapStudent;
+mapStudent["LiMin"]=90;
+mapStudent["ZiLinMi"]=72;
+mapStudent["BoB"]=79;
+map<string, int>::iterator iter=mapStudent.begin();
+for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
+    cout<<iter->first<<" "<<iter->second<<endl;
+}
+```
+
+因此，想改变map的key排序方法，可以通过修改Compare函数实现。
