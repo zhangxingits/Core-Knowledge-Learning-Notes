@@ -496,3 +496,5 @@ for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
 ```
 
 因此，想改变map的key排序方法，可以通过修改Compare函数实现。
+
+key是结构体的，如果没有重载小于号（<）操作，就会导致insert函数在编译时就无法编译成功。其实，为了实现快速查找，map内部本身就是按序存储的（比如红黑树）。在插入<key，value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因。
