@@ -498,3 +498,34 @@ for(iter=mapStudent.begin();iter!=mapStudent.end();iter++){
 因此，想改变map的key排序方法，可以通过修改Compare函数实现。
 
 key是结构体的，如果没有重载小于号（<）操作，就会导致insert函数在编译时就无法编译成功。其实，为了实现快速查找，map内部本身就是按序存储的（比如红黑树）。在插入<key，value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因。
+
+如下代码，mapStudent的key是StudentInfo类型的，要重载StudentInfo类型的<号，这样才能正常地插入到mapStudent中：
+
+```c++
+typedef struct tagStudentInfo  
+{  
+    int iID;  
+    string  strName;  
+	bool operator < (tagStudentInfo const& r) const {  
+        //这个函数指定排序策略，按iID排序，如果iID相等的话，按strName排序  
+        if(iID < r.iID)  return true;  
+        if(iID == r.iID) return strName.compare(r.strName) < 0;  
+        return false;
+    }  
+}StudentInfo;//学生信息
+
+/*用学生信息映射分数*/  
+map<StudentInfo, int>mapStudent;  
+StudentInfo studentInfo;  
+studentInfo.iID = 1;  
+studentInfo.strName = "student_one";  
+mapStudent[studentInfo]=90;
+studentInfo.iID = 2;  
+studentInfo.strName = "student_two"; 
+mapStudent[studentInfo]=80;
+map<StudentInfo, int>::iterator iter=mapStudent.begin();
+for(;iter!=mapStudent.end();iter++){
+    cout<<iter->first.iID<<" "<<iter->first.strName<<" "<<iter->second<<endl;
+}
+```
+
