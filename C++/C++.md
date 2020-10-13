@@ -530,3 +530,30 @@ for(;iter!=mapStudent.end();iter++){
 ```
 
 如果想按照map的value（第二个元素）排序，第一反应是利用stl中提供的sort算法实现，这个想法是好的，不幸的是，sort算法有个限制，利用sort算法只能对序列容器进行排序，只能是线性的（如vector、list、deque）。map也是一个集合容器，它里面存储的元素是pair，但是它不是线性存储的（如红黑树），所以利用sort不能直接和map结合进行排序。虽然不能直接用sort对map进行排序，那么可以间接进行，把map中的元素放到序列容器（如vector）中，然后再对这些元素进行排序呢？这个想法看似是可行的。要对序列容器中的元素进行排序，也有个必要条件：就是容器中的元素必须是可比较的，也就是实现了<操作的。那么现在就来看下map中的元素是否满足这个条件。
+
+```c++
+typedef pair<string, int> PAIR;   
+bool cmp_by_value(const PAIR& lhs, const PAIR& rhs) {  
+  return lhs.second < rhs.second;  
+}  
+struct CmpByValue {  
+  bool operator()(const PAIR& lhs, const PAIR& rhs) {  
+    return lhs.second < rhs.second;  
+  }  
+};
+
+map<string, int> name_score_map;  
+name_score_map["LiMin"] = 90;  
+name_score_map["ZiLinMi"] = 79;  
+name_score_map["BoB"] = 92;  
+name_score_map.insert(make_pair("Bing",99));  
+name_score_map.insert(make_pair("Albert",86));  
+/*把map中元素转存到vector中*/   
+vector<PAIR> name_score_vec(name_score_map.begin(), name_score_map.end());  
+sort(name_score_vec.begin(), name_score_vec.end(), CmpByValue());  
+/*sort(name_score_vec.begin(), name_score_vec.end(), cmp_by_value);也是可以的*/ 
+for (int i = 0; i != name_score_vec.size(); ++i) {  
+    cout<<name_score_vec[i].first<<" "<<name_score_vec[i].second<<endl;  
+}
+```
+
