@@ -277,9 +277,9 @@ key和value可以是任意你需要的类型，但是需要注意的是对于key
 
 根据key值快速查找记录，查找的复杂度基本是Log（N），即如果有1000个记录，最多查找10次；1000000个记录，最多查找20次。除此之外，还有快速插入Key-Value记录、快速删除记录、根据Key修改value记录、遍历所有记录等功能。
 
-#### 1.2.1 map的查增删
 
-##### 1.2.1.1 map的插入
+
+#### 1.2.1. map的插入
 
 先讲下map的插入，map的插入有3种方式：用insert函数插入pair数据、用insert函数插入value_type数据和用数组方式插入数据。
 
@@ -351,7 +351,7 @@ for(iter = mapStudent.begin(); iter != mapStudent.end(); iter++){
 
 用pair判断insert到map的数据是否插入成功。pair变量insert_pair中的第一个元素的类型是map<int,string>::iterator，是和即将要判断的map中的key、value类型一致的一个map的迭代器。如果insert成功了，则insert_pair.second的结果为true，否则则为false。同一个key已经有数据之后，再insert就会失败。而数组插入的方式，则是直接覆盖。
 
-##### 1.2.1.2 map的遍历
+#### 1.2.2 map的遍历
 
 map数据的遍历，这里也提供3种方法，来对map进行遍历：应用前向迭代器方式、应用反向迭代器方式和数组方式。应用前向迭代器，上面举例程序中已经讲解过了，这里着重讲解应用反向迭代器的方式，下面举例说明。
 
@@ -369,7 +369,7 @@ map数据的遍历，这里也提供3种方法，来对map进行遍历：应用�
   }
   ```
 
-##### 1.2.1.3 map的查找
+#### 1.2.3 map的查找
 
 要判定一个数据（关键字）是否在map中出现的方法比较多，这里给出2种常用的数据查找方法。
 
@@ -392,7 +392,7 @@ if(iter != mapStudent.end()){
 }
 ```
 
-##### 1.2.1.4 map的删除
+#### 1.2.4 map的删除
 
 用erase方法可删除map中的元素。
 
@@ -426,7 +426,7 @@ map.erase(b, e); /* 从map中删除一段范围内的元素，该范围由迭代
 
 > 注意：mapStudent.erase(iter++)；中的iter++，不是erase(iter)，然后iter++。因为iter指针被erase之后就失效了，不能再用iter++；也不是erase(++iter)，这样就不是删iter原来指向的元素了。
 
-##### 1.2.1.5 map的排序
+#### 1.2.5 map的排序
 
 map的排序默认按照key从小到大排序，但有以下几点需要注意：①按照key从大到小排序；②key（第一个元素）是一个结构体；③想按value（第二个元素）排序。
 
